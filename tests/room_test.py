@@ -13,3 +13,12 @@ class TestRoom(unittest.TestCase):
 
         def test_room1_has_genre(self):
             self.assertEqual("Abba", self.room1.genre)
+
+        def test_room2_has_capacity(self):
+            self.assertEqual(5, self.room2.capacity)
+
+        def test_room3_has_entry_fee(self):
+            self.assertEqual(75, self.room3.entry_fee)
+
+        def test_room1_has_till(self):
+            self.assertEqual(1000, self.room1.till)
