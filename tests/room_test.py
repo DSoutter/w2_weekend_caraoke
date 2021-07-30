@@ -50,3 +50,11 @@ class TestRoom(unittest.TestCase):
             self.room2.add_people_to_room(self.guest3)
 
             self.assertEqual(False, self.room2.has_capacity())
+
+        def test_remove_person_from_room3(self):
+            self.room3.add_people_to_room(self.guest1)
+            self.room3.add_people_to_room(self.guest2)
+            self.room3.add_people_to_room(self.guest3)
+            self.room3.remove_person_from_room(self.guest1)
+
+            self.assertEqual(2, self.room3.count_guests())

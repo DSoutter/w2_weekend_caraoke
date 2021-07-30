@@ -20,3 +20,6 @@ class Room:
 
     def add_people_to_room(self, guest):
         self.guests.append(guest)
+
+    def remove_person_from_room(self, guest):
+        self.guests.remove(guest)
