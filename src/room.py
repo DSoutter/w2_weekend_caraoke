@@ -19,6 +19,7 @@ class Room:
             return False
 
     def add_people_to_room(self, guest):
+        guest.in_room = self.genre
         self.guests.append(guest)
 
     def remove_person_from_room(self, guest):
