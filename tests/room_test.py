@@ -70,3 +70,11 @@ class TestRoom(unittest.TestCase):
         self.room3.remove_person_from_room(self.guest1)
 
         self.assertEqual(2, self.room3.count_guests())
+
+    # maybe need to redo this test
+    def test_song4_is_in_room2_true(self):
+        self.room2.add_song_to_room(self.song4)
+        self.assertEqual(True, self.song4 in self.room2.songs)
+
+    def test_song4_is_in_room2_false(self):
+        self.assertEqual(False, self.song4 in self.room2.songs)
