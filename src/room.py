@@ -11,3 +11,9 @@ class Room:
 
     def count_guests(self):
         return len(self.guests)
+
+    def has_capacity(self):
+        if self.count_guests()<self.capacity:
+            return True
+        else:
+            return False
