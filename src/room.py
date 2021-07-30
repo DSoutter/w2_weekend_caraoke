@@ -7,4 +7,7 @@ class Room:
         self.till = till
         self.guests = []
         self.songs = []
-        
+
+
+    def count_guests(self):
+        return len(self.guests)
