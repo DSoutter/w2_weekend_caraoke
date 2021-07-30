@@ -17,3 +17,6 @@ class Room:
             return True
         else:
             return False
+
+    def add_people_to_room(self, guest):
+        self.guests.append(guest)
