@@ -23,6 +23,10 @@ class TestGuest(unittest.TestCase):
         self.room1.add_people_to_room(self.guest1)
         self.assertEqual("Abba", self.guest1.what_room_guest_is_in(self.room1))
 
-    def test_guest_in_favourite_room(self):
+    def test_guest_in_favourite_room_true(self):
         self.room2.add_people_to_room(self.guest3)
         self.assertEqual(True, self.guest3.guest_in_favourite_room(self.room2))
+
+    def test_guest_in_favourite_room_false(self):
+        self.room1.add_people_to_room(self.guest3)
+        self.assertEqual(False, self.guest3.guest_in_favourite_room(self.room2))

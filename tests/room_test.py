@@ -32,13 +32,13 @@ class TestRoom(unittest.TestCase):
     def test_room2_has_no_guests(self):
         self.assertEqual(0,self.room2.count_guests())
 
-    def test_room3_has_enough_capacity(self):
+    def test_room3_has_enough_capacity_True(self):
         self.assertEqual(True, self.room3.has_capacity())
 
 # need to add people to the room 
 # simple test first for checking in, no money involved.
 
-    def test_room1_does_not_have_enough_capacity(self):
+    def test_room1_does_not_have_enough_capacity_False(self):
         self.room2.add_people_to_room(self.guest1)
         self.room2.add_people_to_room(self.guest2)
         self.room2.add_people_to_room(self.guest3)
