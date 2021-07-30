@@ -12,6 +12,6 @@ class Guest:
 
     def guest_in_favourite_room(self, room):
         if self.in_room == self.favourite_genre:
-            return True
+            return f"{self.in_room} Karaoke is {self.name}'s favourite genre!" 
         else:
-            return False
+            return f"{self.in_room} Karaoke is NOT {self.name}'s favourite genre!"

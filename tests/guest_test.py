@@ -25,8 +25,8 @@ class TestGuest(unittest.TestCase):
 
     def test_guest_in_favourite_room_true(self):
         self.room2.add_people_to_room(self.guest3)
-        self.assertEqual(True, self.guest3.guest_in_favourite_room(self.room2))
+        self.assertEqual("Christmas Karaoke is Shane MacGowan's favourite genre!", self.guest3.guest_in_favourite_room(self.room2))
 
     def test_guest_in_favourite_room_false(self):
         self.room1.add_people_to_room(self.guest3)
-        self.assertEqual(False, self.guest3.guest_in_favourite_room(self.room2))
+        self.assertEqual("Abba Karaoke is NOT Shane MacGowan's favourite genre!", self.guest3.guest_in_favourite_room(self.room2))
