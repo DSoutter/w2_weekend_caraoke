@@ -19,9 +19,9 @@ class TestGuest(unittest.TestCase):
         self.room2 = Room(self.genre2, 5, 30, 600)
         self.room3 = Room(self.genre3, 12, 75, 2000)
 
-        self.guest1 = Guest("Anthony Kiedis", "Abba", 200)
-        self.guest2 = Guest("Elton John", "Disco", 150)
-        self.guest3 = Guest("Shane MacGowan", "Christmas", 50)
+        self.guest1 = Guest("Anthony Kiedis", "Abba", "Mamma Mia", 200)
+        self.guest2 = Guest("Elton John", "Disco", "Funky Town", 150)
+        self.guest3 = Guest("Shane MacGowan", "Christmas", "Fairytale of New York",  50)
 
         self.song1 = Song("Mamma Mia","Abba",self.genre1)
         self.song2 = Song("22","Taylor Swift",self.genre1)
@@ -45,3 +45,11 @@ class TestGuest(unittest.TestCase):
     def test_guest_in_favourite_room_false(self):
         self.room1.add_people_to_room(self.guest3)
         self.assertEqual("Pop Karaoke is NOT Shane MacGowan's favourite genre!", self.guest3.guest_in_favourite_room(self.room2))
+
+    def test_guests_favourite_song_in_room_true(self):
+        self.room1.add_song_to_room(self.song1)
+        self.room1.add_song_to_room(self.song2)
+        self.room1.add_song_to_room(self.song3)
+
+        self.assertEqual("I love this song!", self.guest1.guests_favourite_song(self.song1))
+                

@@ -15,9 +15,9 @@ class TestSong(unittest.TestCase):
         self.room2 = Room(self.genre2, 5, 30, 600)
         self.room3 = Room(self.genre3, 12, 75, 2000)
 
-        self.guest1 = Guest("Anthony Kiedis", "Abba", 200)
-        self.guest2 = Guest("Elton John", "Disco", 150)
-        self.guest3 = Guest("Shane MacGowan", "Christmas", 50)
+        self.guest1 = Guest("Anthony Kiedis", "Abba", "Mamma Mia", 200)
+        self.guest2 = Guest("Elton John", "Disco", "Funky Town", 150)
+        self.guest3 = Guest("Shane MacGowan", "Christmas", "Fairytale of New York",  50)
 
         self.song1 = Song("Mamma Mia","Abba",self.genre1)
         self.song2 = Song("22","Taylor Swift",self.genre1)
