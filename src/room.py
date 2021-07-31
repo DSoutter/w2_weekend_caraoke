@@ -14,9 +14,9 @@ class Room:
 
     def has_capacity(self):
         if self.count_guests()<self.capacity:
-            return True
+            return "The more the merrier!"
         else:
-            return False
+            return "No space left I'm afraid!"
 
     def add_people_to_room(self, guest):
         guest.in_room = self.genre
@@ -26,6 +26,6 @@ class Room:
         self.guests.remove(guest)
 
     def add_song_to_room(self, song):
-        self.songs.append(song)
+        self.songs.append(song.name)
 
     

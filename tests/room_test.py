@@ -45,7 +45,7 @@ class TestRoom(unittest.TestCase):
         self.assertEqual(0,self.room2.count_guests())
 
     def test_room3_has_enough_capacity_True(self):
-        self.assertEqual(True, self.room3.has_capacity())
+        self.assertEqual("The more the merrier!", self.room3.has_capacity())
 
 # need to add people to the room 
 # simple test first for checking in, no money involved.
@@ -61,7 +61,7 @@ class TestRoom(unittest.TestCase):
         self.room2.add_people_to_room(self.guest2)
         self.room2.add_people_to_room(self.guest3)
 
-        self.assertEqual(False, self.room2.has_capacity())
+        self.assertEqual("No space left I'm afraid!", self.room2.has_capacity())
 
     def test_remove_person_from_room3(self):
         self.room3.add_people_to_room(self.guest1)
@@ -71,10 +71,9 @@ class TestRoom(unittest.TestCase):
 
         self.assertEqual(2, self.room3.count_guests())
 
-    # maybe need to redo this test
     def test_song4_is_in_room2_true(self):
         self.room2.add_song_to_room(self.song4)
-        self.assertEqual(True, self.song4 in self.room2.songs)
+        self.assertEqual(True, self.song4.name in self.room2.songs)
 
     def test_song4_is_in_room2_false(self):
         self.assertEqual(False, self.song4 in self.room2.songs)
