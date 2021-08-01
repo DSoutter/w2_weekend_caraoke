@@ -101,3 +101,12 @@ class TestRoom(unittest.TestCase):
         outcome = self.room3.transaction_occurs(self.guest3)
 
         self.assertEqual("Sorry, not enough money", outcome)
+
+    def test_full_entry_successful(self):
+        self.room1.transaction_occurs(self.guest1)
+
+        self.assertEqual(1050, self.room1.till)
+        self.assertEqual(150, self.guest1.wallet)
+        self.assertEqual(1, self.room1.count_guests())
+
+    
