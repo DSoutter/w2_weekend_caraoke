@@ -149,4 +149,14 @@ class TestRoom(unittest.TestCase):
         self.assertEqual(["Wine","Vodka"],self.guest2.drinks_had)
         self.assertEqual(7, self.drink2.quantity)
         self.assertEqual(4, self.drink3.quantity)
-    # def test_two_guests_bought_drink(self):
+
+    def test_two_guests_bought_drink(self):
+        self.room2.transaction_occurs(self.guest2)
+        self.room2.create_bar_tab(self.guest2)
+        self.room2.transaction_occurs(self.guest1)
+        self.room2.create_bar_tab(self.guest1)
+        self.room2.sell_drink(self.guest2, self.drink3)
+        self.room2.sell_drink(self.guest1, self.drink2)
+
+        self.assertEqual(735, self.room2.till)
+        self.assertEqual({"Elton John" : 55,"Anthony Kiedis" : 80 },self.room2.bar_tab)
