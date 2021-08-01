@@ -45,7 +45,7 @@ class TestRoom(unittest.TestCase):
         self.assertEqual(0,self.room2.count_guests())
 
     def test_room3_has_enough_capacity_True(self):
-        self.assertEqual("The more the merrier!", self.room3.has_capacity())
+        self.assertEqual(True, self.room3.has_capacity())
 
 # need to add people to the room 
 # simple test first for checking in, no money involved.
@@ -61,7 +61,7 @@ class TestRoom(unittest.TestCase):
         self.room2.add_people_to_room(self.guest2)
         self.room2.add_people_to_room(self.guest3)
 
-        self.assertEqual("No space left I'm afraid!", self.room2.has_capacity())
+        self.assertEqual(False, self.room2.has_capacity())
 
     def test_remove_person_from_room3(self):
         self.room3.add_people_to_room(self.guest1)
@@ -77,3 +77,21 @@ class TestRoom(unittest.TestCase):
 
     def test_song4_is_in_room2_false(self):
         self.assertEqual(False, self.song4 in self.room2.songs)
+
+    def test_entry_fee_being_paid(self):
+        self.room2.transaction_occurs(self.guest2)
+
+        self.assertEqual(630, self.room2.till)
+        self.assertEqual(120, self.guest2.wallet)
+
+
+    def test_entry_fee_not_paid_no_space(self):
+        self.room2.add_people_to_room(self.guest1)
+        self.room2.add_people_to_room(self.guest2)
+        self.room2.add_people_to_room(self.guest3)
+        self.room2.add_people_to_room(self.guest1)
+        self.room2.add_people_to_room(self.guest2)
+        
+        outcome = self.room2.transaction_occurs(self.guest3)
+
+        self.assertEqual("No space left I'm afraid", outcome)

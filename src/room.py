@@ -14,9 +14,9 @@ class Room:
 
     def has_capacity(self):
         if self.count_guests()<self.capacity:
-            return "The more the merrier!"
+            return True
         else:
-            return "No space left I'm afraid!"
+            return False
 
     def add_people_to_room(self, guest):
         guest.in_room = self.genre
@@ -27,5 +27,23 @@ class Room:
 
     def add_song_to_room(self, song):
         self.songs.append(song.name)
+
+# need a method for the guest to remove money
+# need a method to increase till if person has money
+# also need to check if room has capacity 
+
+    def increase_till(self):
+        self.till+=self.entry_fee
+
+    def transaction_occurs(self, guest):
+        if self.has_capacity() == False:
+            return "No space left I'm afraid"
+        elif guest.wallet <= self.entry_fee:
+            return "Sorry, not enough money" 
+        else:                 
+            self.increase_till()
+            guest.pay_entry_fee(self)
+            self.add_people_to_room(guest)
+
 
     

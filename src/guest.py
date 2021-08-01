@@ -22,3 +22,6 @@ class Guest:
             return "This room's playing my song!"
         else:
             return "They should get some better songs..."
+
+    def pay_entry_fee(self, room):
+        self.wallet -= room.entry_fee
