@@ -27,8 +27,13 @@ class Guest:
     def pay_entry_fee(self, room):
         self.wallet -= room.entry_fee
 
-    def buy_drink(self, drink):
+    def can_buy_drink(self, drink):
         if self.wallet >= drink.price:
             return True
         else:
             return False
+
+    def buy_drink(self, drink):
+        self.wallet -= drink.price
+        self.drinks_had.append(drink.name)
+        drink.quantity -= 1

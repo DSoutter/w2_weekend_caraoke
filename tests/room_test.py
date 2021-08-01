@@ -31,8 +31,8 @@ class TestRoom(unittest.TestCase):
         self.song9 = Song("Funky Town","Lipps Inc",self.genre3)
 
         self.drink1 = Bar("Beer", 100, 10)
-        self.drink2 = Bar("Wine", 200, 8)
-        self.drink3 = Bar("Vodka", 150, 5)
+        self.drink2 = Bar("Wine", 50, 8)
+        self.drink3 = Bar("Vodka", 25, 5)
 
     def test_room1_has_genre(self):
         self.assertEqual("Pop", self.room1.genre)
@@ -126,14 +126,27 @@ class TestRoom(unittest.TestCase):
 
         self.assertEqual({"Anthony Kiedis" : 30}, self.room2.bar_tab)
 
-    # def test_guest_bought_drink(self):
-    #     self.room2.transaction_occurs(self.guest1)
-    #     self.room2.create_bar_tab(self.guest1)
-    #     self.room2.sell_drink(self.guest1, self.drink1)
+    def test_guest_bought_drink(self):
+        self.room2.transaction_occurs(self.guest1)
+        self.room2.create_bar_tab(self.guest1)
+        self.room2.sell_drink(self.guest1, self.drink1)
+    
+        self.assertEqual(730, self.room2.till)
+        self.assertEqual(70, self.guest1.wallet)
+        self.assertEqual({"Anthony Kiedis" : 130},self.room2.bar_tab )
+        self.assertEqual(["Beer"],self.guest1.drinks_had)
+        self.assertEqual(9, self.drink1.quantity)
 
-    #     self.assertEqual(730, self.room2.till)
-    #     self.assertEqual(70, self.guest1.wallet)
-    #     self.assertEqual({"Anthony Kiedis" : 130},self.room2.bar_tab )
-    #     # spending
-    #     self.assertEqual(["Beer"],self.guest1.drinks_had)
-    #     self.assertEqual(9, self.drink1.quantity)
+    def test_guest_bought_multiple_drinks(self):
+        self.room2.transaction_occurs(self.guest2)
+        self.room2.create_bar_tab(self.guest2)
+        self.room2.sell_drink(self.guest2, self.drink2)
+        self.room2.sell_drink(self.guest2, self.drink3)
+                
+                
+        self.assertEqual(705, self.room2.till)
+        self.assertEqual({"Elton John" : 105},self.room2.bar_tab)
+        self.assertEqual(["Wine","Vodka"],self.guest2.drinks_had)
+        self.assertEqual(7, self.drink2.quantity)
+        self.assertEqual(4, self.drink3.quantity)
+    # def test_two_guests_bought_drink(self):

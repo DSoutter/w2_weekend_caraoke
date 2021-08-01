@@ -54,11 +54,10 @@ class Room:
 
 
     def sell_drink(self, guest, drink):
-        if guest.buy_drink(drink) == True:
-            guest.wallet -= drink.price
+        if guest.can_buy_drink(drink) == True:
+            guest.buy_drink(drink)
             self.till += drink.price
-            print (self.bar_tab)
-            #self.bar_tab[guest.name] += drink.price
-            #buy_drink(drink.name)
+            self.bar_tab[guest.name] += drink.price
+
         else:
             return "Not enough money, sorry"
