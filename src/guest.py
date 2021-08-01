@@ -6,6 +6,7 @@ class Guest:
         self.favourite_song = favourite_song
         self.wallet = wallet
         self.in_room = ""
+        self.drinks_had = []
 
     def what_room_guest_is_in(self,room):
         self.in_room = room.genre
@@ -25,3 +26,9 @@ class Guest:
 
     def pay_entry_fee(self, room):
         self.wallet -= room.entry_fee
+
+    def buy_drink(self, drink):
+        if self.wallet >= drink.price:
+            return True
+        else:
+            return False

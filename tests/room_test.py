@@ -3,6 +3,7 @@ import unittest
 from src.guest import *
 from src.room import *
 from src.song import *
+from src.bar import *
 
 class TestRoom(unittest.TestCase):
 
@@ -28,6 +29,10 @@ class TestRoom(unittest.TestCase):
         self.song7 = Song("Y.M.C.A","The Village People",self.genre3)
         self.song8 = Song("Night Fever","Bee Gees",self.genre3)
         self.song9 = Song("Funky Town","Lipps Inc",self.genre3)
+
+        self.drink1 = Bar("Beer", 100, 10)
+        self.drink2 = Bar("Wine", 200, 8)
+        self.drink3 = Bar("Vodka", 150, 5)
 
     def test_room1_has_genre(self):
         self.assertEqual("Pop", self.room1.genre)
@@ -109,4 +114,26 @@ class TestRoom(unittest.TestCase):
         self.assertEqual(150, self.guest1.wallet)
         self.assertEqual(1, self.room1.count_guests())
 
-    
+# to buy drink, customer has to have money
+# bar has to sell the drink, quantity goes down
+# bar till goes up
+# wallet goes down
+# guest adds to list of drinks had
+# bar tracks guests spending
+
+    def test_check_bar_tab(self):
+        self.room2.create_bar_tab(self.guest1)
+
+        self.assertEqual({"Anthony Kiedis" : 30}, self.room2.bar_tab)
+
+    # def test_guest_bought_drink(self):
+    #     self.room2.transaction_occurs(self.guest1)
+    #     self.room2.create_bar_tab(self.guest1)
+    #     self.room2.sell_drink(self.guest1, self.drink1)
+
+    #     self.assertEqual(730, self.room2.till)
+    #     self.assertEqual(70, self.guest1.wallet)
+    #     self.assertEqual({"Anthony Kiedis" : 130},self.room2.bar_tab )
+    #     # spending
+    #     self.assertEqual(["Beer"],self.guest1.drinks_had)
+    #     self.assertEqual(9, self.drink1.quantity)

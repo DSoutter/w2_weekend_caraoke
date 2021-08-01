@@ -1,3 +1,4 @@
+import pdb
 class Room: 
 
     def __init__(self, genre, capacity, entry_fee, till):
@@ -7,6 +8,7 @@ class Room:
         self.till = till
         self.guests = []
         self.songs = []
+        self.bar_tab = {}
 
 
     def count_guests(self):
@@ -45,5 +47,18 @@ class Room:
             guest.pay_entry_fee(self)
             self.add_people_to_room(guest)
 
+# setting up a bar tab with the cost of the room
+    def create_bar_tab(self, guest):
+       # pdb.set_trace()
+        self.bar_tab[guest.name] = self.entry_fee
 
-    
+
+    def sell_drink(self, guest, drink):
+        if guest.buy_drink(drink) == True:
+            guest.wallet -= drink.price
+            self.till += drink.price
+            print (self.bar_tab)
+            #self.bar_tab[guest.name] += drink.price
+            #buy_drink(drink.name)
+        else:
+            return "Not enough money, sorry"
